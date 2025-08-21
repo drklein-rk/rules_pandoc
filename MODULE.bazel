@@ -1,7 +1,7 @@
 "Bazel dependencies"
 
 module(
-    name = "com_myorg_rules_mylang",
+    name = "rules_pandoc",
 
     # NOTE:
     # version = "",

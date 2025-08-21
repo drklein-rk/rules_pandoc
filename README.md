@@ -15,7 +15,7 @@ Features:
 
 Ready to get started? Copy this repo, then
 
-1. search for "com_myorg_rules_mylang" and replace with the name you'll use for your workspace
+1. search for "rules_pandoc" and replace with the name you'll use for your workspace
 1. search for "myorg" and replace with GitHub org
 1. search for "mylang", "Mylang", "MYLANG" and replace with the language/tool your rules are for
 1. rename directory "mylang" similarly
