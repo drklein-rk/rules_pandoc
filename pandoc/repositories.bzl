@@ -17,7 +17,7 @@ _ATTRS = {
 }
 
 def _pandoc_repo_impl(repository_ctx):
-    url = "https://github.com/someorg/someproject/releases/download/v{0}/pandoc-{1}.zip".format(
+    url = "https://github.com/jgm/pandoc/releases/download/v{0}/pandoc-{1}.zip".format(
         repository_ctx.attr.pandoc_version,
         repository_ctx.attr.platform,
     )
