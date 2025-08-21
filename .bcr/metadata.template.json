@@ -1,7 +1,7 @@
 {
-  "homepage": "https://github.com/myorg/rules_mylang",
+  "homepage": "https://github.com/drklein-rk/rules_pandoc",
   "maintainers": [],
-  "repository": ["github:myorg/rules_mylang"],
+  "repository": ["github:drklein-rk/rules_pandoc"],
   "versions": [],
   "yanked_versions": {}
 }
