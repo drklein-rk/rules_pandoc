@@ -35,7 +35,7 @@ http_archive(
     name = "rules_pandoc",
     sha256 = "${SHA}",
     strip_prefix = "${PREFIX}",
-    url = "https://github.com/myorg/rules_mylang/releases/download/${TAG}/${ARCHIVE}",
+    url = "https://github.com/drklein-rk/rules_mylang/releases/download/${TAG}/${ARCHIVE}",
 )
 EOF
 
