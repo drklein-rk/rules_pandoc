@@ -10,7 +10,7 @@ _PANDOC_TOOLCHAIN = "//pandoc:toolchain_type"
 
 def _pandoc_implementation(ctx):
     inputs = ctx.files.srcs + ctx.files.data
-    toolchain = ctx.toolchains[_PANDOC_TOOLCHAIN].binary_info
+    toolchain = ctx.toolchains[_PANDOC_TOOLCHAIN].pandocinfo
     output = ctx.outputs.out
 
     args = ctx.actions.args()
@@ -31,7 +31,7 @@ def _pandoc_implementation(ctx):
         inputs = inputs,
         arguments = [args],
         mnemonic = "PandocConvert",
-        executable = toolchain.binary,
+        executable = toolchain.tool_files[0],
     )
 
     return [
