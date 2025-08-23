@@ -1,6 +1,8 @@
 <!-- Generated with Stardoc: http://skydoc.bazel.build -->
 
-Public API re-exports
+# Rules
+
+Bazel rules to convert files with [pandoc](https://pandoc.org/).
 
 <a id="pandoc"></a>
 

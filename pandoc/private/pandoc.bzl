@@ -1,8 +1,4 @@
-"""
-# Pandoc
-
-Bazel rules to convert files with [pandoc](https://pandoc.org/).
-"""
+"Pandoc Rules"
 
 load("@aspect_bazel_lib//lib:expand_make_vars.bzl", "expand_locations")
 
