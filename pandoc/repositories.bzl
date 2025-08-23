@@ -18,9 +18,14 @@ _ATTRS = {
 
 def _pandoc_repo_impl(repository_ctx):
     version = repository_ctx.attr.pandoc_version
-    url = "https://github.com/jgm/pandoc/releases/download/{version}/pandoc-{version}-{platform}.zip".format(
+    ext = "zip"
+
+    if repository_ctx.attr.platform.startswith("linux"):
+        ext = "tar.gz"
+    url = "https://github.com/jgm/pandoc/releases/download/{version}/pandoc-{version}-{platform}.{ext}".format(
         version = version,
         platform = repository_ctx.attr.platform,
+        ext = ext,
     )
 
     prefix = "pandoc-%s" % version
