@@ -1,5 +1,15 @@
 # How to Contribute
 
+All contributions are welcome!
+There are many ways to contribute to this project:
+
+- File a [new issue] for a bug report or feature request.
+- Improve the documentation or add new examples.
+- Participate in discussions and [reviews][pulls].
+
+[new issue]: https://github.com/drklein-rk/rules_pandoc/issues/new
+[pulls]: https://github.com/drklein-rk/rules_pandoc/pulls
+
 ## Using devcontainers
 
 If you are using [devcontainers](https://code.visualstudio.com/docs/devcontainers/containers)
