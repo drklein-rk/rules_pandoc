@@ -31,3 +31,7 @@ pandoc(
     write = "html5",
 )
 ```
+
+### Resources
+
+- [Pandoc Manual](https://pandoc.org/MANUAL.html)
