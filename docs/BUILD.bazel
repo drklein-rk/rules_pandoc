@@ -1,5 +1,6 @@
 load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load(":page.bzl", "page")
 
 stardoc_with_diff_test(
@@ -56,3 +57,10 @@ filegroup(
 )
 
 update_docs(name = "update")
+
+bzl_library(
+    name = "page",
+    srcs = ["page.bzl"],
+    visibility = ["//visibility:public"],
+    deps = ["//pandoc:defs"],
+)
