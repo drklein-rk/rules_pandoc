@@ -1,10 +1,58 @@
-# This load statement must be in the docs/ package rather than anything users depend on
-# so that the dependency on stardoc doesn't leak to them.
+load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
+load(":page.bzl", "page")
 
 stardoc_with_diff_test(
     name = "rules",
     bzl_library_target = "//pandoc:defs",
+)
+
+copy_to_bin(
+    name = "assets",
+    srcs = glob(["assets/*"]),
+)
+
+page(
+    name = "index_html",
+    src = "//:README.md",
+    out = "index.html",
+    args = [
+        "--toc=false",
+        "--shift-heading-level-by=-1",
+    ],
+    template = "index",
+)
+
+page(
+    name = "rules_html",
+    src = ":rules.md",
+    out = "rules.html",
+    args = [
+        "--toc=true",
+        "--css=/assets/page.css",
+    ],
+    title = "Rules",
+)
+
+page(
+    name = "contrib_html",
+    src = "//:CONTRIBUTING.md",
+    out = "contrib.html",
+    args = [
+        "--toc=true",
+        "--shift-heading-level-by=1",
+    ],
+    title = "Contribute",
+)
+
+filegroup(
+    name = "docs",
+    srcs = [
+        ":assets",
+        ":contrib_html",
+        ":index_html",
+        ":rules_html",
+    ],
 )
 
 update_docs(name = "update")

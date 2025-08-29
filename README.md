@@ -1,12 +1,24 @@
-# Bazel rules for pandoc
+# Bazel rules for Pandoc
 
-## Installation
+<!--
+
+NOTE:   The following headings are set to level 3 because we later shift them
+        by -1 (see //docs:pages.bzl). This will make them to level 2 headings
+        and the level 1 heading above appear as the title of the document.
+
+-->
+
+### Installation
+
+Put `rules_pandoc` as a new dependency in your `MODULE.bazel`.
 
 ```starlark
 bazel_dep(name = "rules_pandoc", version = "0.0.0")
 ```
 
-## Usage
+### Usage
+
+Load and use in a `BUILD.bazel` file.
 
 ```starlark
 load("@rules_pandoc//pandoc:defs.bzl", "pandoc")

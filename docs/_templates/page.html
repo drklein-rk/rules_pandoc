@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>$title$ - rules_pandoc</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    $for(css)$
+    <link rel="stylesheet" href="$css$" />
+    $endfor$
+    <style>
+      pre {
+        border: 1px solid var(--pico-form-element-active-border-color);
+      }
+      main {
+        display: flex;
+        justify-content: space-between;
+      }
+      main > article {
+        width: 79.5%;
+      }
+      main > aside {
+        padding-top: var(--pico-spacing);
+        width: 18%;
+      }
+    </style>
+  </head>
+  <body>
+    $for(include-before)$ $include-before$ $endfor$
+    <section class="container">
+      <h1 class="title">$title$</h1>
+    </section>
+    <section class="container">
+      <main>
+        <article>$body$</article>
+        $if(toc)$
+        <aside>
+          <nav id="$idprefix$TOC" role="doc-toc">
+            $if(toc-title)$
+            <h4 id="$idprefix$toc-title">$toc-title$</h4>
+            $endif$ $table-of-contents$
+          </nav>
+          <hr />
+          <a
+            href="https://github.com/drklein-rk/rules_pandoc/blob/main/$source$"
+          >
+            Page source</a
+          >
+        </aside>
+        $endif$
+      </main>
+    </section>
+    $for(include-after)$ $include-after$ $endfor$
+  </body>
+</html>
