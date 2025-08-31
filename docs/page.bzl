@@ -8,8 +8,9 @@ def page(name, src, template = "page", title = None, args = [], data = [], **kwa
         read = "gfm",
         srcs = [src],
         args = args + [
+            "--include-in-header=$(location :_includes/meta.html)",
             "--include-after-body=$(location :_includes/footer.html)",
-            "--include-before-body=$(location :_includes/header.html)",
+            "--include-before-body=$(location :_includes/nav.html)",
         ],
         template = ":_templates/%s.html" % template,
         standalone = True,
@@ -21,7 +22,8 @@ def page(name, src, template = "page", title = None, args = [], data = [], **kwa
         write = "html5",
         data = [
             ":_includes/footer.html",
-            ":_includes/header.html",
+            ":_includes/nav.html",
+            ":_includes/meta.html",
         ] + data,
         **kwargs
     )
