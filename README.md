@@ -32,6 +32,16 @@ pandoc(
 )
 ```
 
+### Acknowledgement
+
+The pandoc logo used on this site was created by Albert Krewinkel ([tarleb])
+and published under CC BY-SA 4.0 license.
+
+- [pandoc-logo] source repository
+
+[tarleb]: https://github.com/tarleb
+[pandoc-logo]: https://github.com/tarleb/pandoc-logo
+
 ### Resources
 
 - [Pandoc Manual](https://pandoc.org/MANUAL.html)
