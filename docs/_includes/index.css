@@ -1,0 +1,10 @@
+h1.title {
+  text-align: center;
+  font-size: 6rem;
+  margin: 6rem auto;
+  padding: 0 6rem;
+}
+
+footer > p {
+  text-align: center;
+}

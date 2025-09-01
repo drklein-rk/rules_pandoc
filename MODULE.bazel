@@ -14,6 +14,12 @@ bazel_dep(name = "platforms", version = "1.0.0")
 bazel_dep(name = "gazelle", version = "0.35.0", dev_dependency = True, repo_name = "bazel_gazelle")
 bazel_dep(name = "bazel_skylib_gazelle_plugin", version = "1.4.1", dev_dependency = True)
 bazel_dep(name = "buildifier_prebuilt", version = "6.1.2", dev_dependency = True)
+bazel_dep(name = "rules_m4", version = "0.3", dev_dependency = True)
+git_override(
+    module_name = "rules_m4",
+    commit = "d42237e30239dfef7e9d15bfdef2a817d1ac4dee",
+    remote = "https://github.com/mgred/rules_m4",
+)
 
 pandoc = use_extension("//pandoc:extensions.bzl", "pandoc")
 pandoc.toolchain(pandoc_version = "3.7.0.2")

@@ -2,17 +2,16 @@
 
 load("//pandoc:defs.bzl", "pandoc")
 
-def page(name, src, template = "page", title = None, args = [], data = [], **kwargs):
+def page(name, src, template = ":page_template", title = None, args = [], data = [], **kwargs):
     pandoc(
         name = name,
         read = "gfm",
         srcs = [src],
         args = args + [
-            "--include-in-header=$(location :_includes/meta.html)",
             "--include-after-body=$(location :_includes/footer.html)",
             "--include-before-body=$(location :_includes/nav.html)",
         ],
-        template = ":_templates/%s.html" % template,
+        template = template,
         standalone = True,
         metadata = {
             "title": title or "",
@@ -23,7 +22,6 @@ def page(name, src, template = "page", title = None, args = [], data = [], **kwa
         data = [
             ":_includes/footer.html",
             ":_includes/nav.html",
-            ":_includes/meta.html",
         ] + data,
         **kwargs
     )

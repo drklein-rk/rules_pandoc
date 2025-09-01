@@ -1,7 +1,39 @@
 load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@rules_m4//m4:m4.bzl", "m4")
 load(":page.bzl", "page")
+
+M4_OPTIONS = [
+    "-I",
+    "docs/_includes",
+]
+
+m4(
+    name = "index_template",
+    srcs = [
+        ":_templates/html.m4",
+        ":_templates/index.in.html",
+    ],
+    data = [
+        ":_includes/index.css",
+    ],
+    m4_options = M4_OPTIONS,
+    output = "index.template.html",
+)
+
+m4(
+    name = "page_template",
+    srcs = [
+        ":_templates/html.m4",
+        ":_templates/page.in.html",
+    ],
+    data = [
+        ":_includes/page.css",
+    ],
+    m4_options = M4_OPTIONS,
+    output = "page.template.html",
+)
 
 stardoc_with_diff_test(
     name = "rules",
@@ -21,7 +53,7 @@ page(
         "--toc=false",
         "--shift-heading-level-by=-1",
     ],
-    template = "index",
+    template = ":index_template",
 )
 
 page(
@@ -30,7 +62,7 @@ page(
     out = "rules.html",
     args = [
         "--toc=true",
-        "--css=/assets/page.css",
+        "--css=/assets/rules.css",
     ],
     title = "Rules",
 )

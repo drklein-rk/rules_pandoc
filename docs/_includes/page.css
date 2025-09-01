@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+main > article {
+  width: 79.5%;
+}
+
+main > aside {
+  padding-top: var(--pico-spacing);
+  width: 18%;
+}
+
+li > ul {
+  padding-left: var(--pico-spacing);
+}
