@@ -5,7 +5,7 @@ load("//pandoc:defs.bzl", "pandoc")
 def page(name, src, template = ":page_template", title = None, args = [], data = [], **kwargs):
     pandoc(
         name = name,
-        read = "gfm",
+        read = "gfm+definition_lists",
         srcs = [src],
         args = args + [
             "--include-after-body=$(location :_includes/footer.html)",
