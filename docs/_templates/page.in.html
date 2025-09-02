@@ -1,13 +1,14 @@
 HTML
 HEAD(`page.css')
 BODY(`<article>$body$</article>
-      $if(toc)$
       <aside>
-        <nav id="$idprefix$TOC" role="doc-toc">
-          $if(toc-title)$
-          <h4 id="$idprefix$toc-title">$toc-title$</h4>
-          $endif$ $table-of-contents$
-        </nav>
-        <hr />
-        <a href="GITHUB_URL`blob/main/$source$'">Page source</a>
-      </aside>$endif$')
+        <section class="content-wrapper">
+          <nav id="$idprefix$TOC" role="doc-toc">
+            $if(toc-title)$
+            <h4 id="$idprefix$toc-title">$toc-title$</h4>
+            $endif$ $table-of-contents$
+          </nav>
+          <hr />
+          <a href="GITHUB_URL`blob/main/$source$'">Page source</a>
+        </section>
+      </aside>')

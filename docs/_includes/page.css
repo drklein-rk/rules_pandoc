@@ -12,6 +12,13 @@ main > aside {
   width: 18%;
 }
 
+main > aside > section.content-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--pico-spacing);
+  z-index: 2;
+}
+
 li > ul {
   padding-left: var(--pico-spacing);
 }
