@@ -1,7 +1,9 @@
 define(`GITHUB_URL', `https://github.com/drklein-rk/rules_pandoc/')dnl
-define(`HTML_BEGIN',`<!doctype html>
-<html>')dnl
-define(`HTML_END',`</html>')dnl
+define(`HTML',`<!doctype html>
+<html>
+divert(`1')</html>
+divert
+')dnl
 define(`FOR', `$for($1)$ ifelse(`$#', `1', ``$$1$'', ``$2'') $endfor$')dnl
 define(`STYLE_LINK', `<link rel="stylesheet" href="$1" />')dnl
 define(`META', `<meta name="DC.$1" content="$2" />')dnl
