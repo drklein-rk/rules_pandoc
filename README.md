@@ -18,7 +18,9 @@ bazel_dep(name = "rules_pandoc", version = "0.0.0")
 
 ### Usage
 
-Load and use in a `BUILD.bazel` file.
+<div class="grid"><div>
+
+Load and use the `pandoc` rule.
 
 ```starlark
 load("@rules_pandoc//pandoc:defs.bzl", "pandoc")
@@ -31,6 +33,24 @@ pandoc(
     write = "html5",
 )
 ```
+
+</div><div>
+
+Use Pandoc from the `resolved_toolchain`.
+
+```starlark
+genrule(
+    name = "html",
+    srcs = ["README.md"],
+    outs = ["index.html"],
+    cmd = """\
+        $(PANDOC_BIN) --from gfm \
+        --to html --out $(OUTS) < $(SRCS)""",
+    toolchains = ["@rules_pandoc//pandoc:resolved_toolchain"],
+)
+```
+
+</div></div>
 
 ### Acknowledgement
 
