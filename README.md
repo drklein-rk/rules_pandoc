@@ -54,12 +54,9 @@ genrule(
 
 ### Acknowledgement
 
-[Pandoc Logo]
-: The pandoc logo used on this site was created by Albert Krewinkel ([tarleb])
-and published under CC BY-SA 4.0 license.
-
-[PicoCSS]
-: We use the amazing PicoCSS (fuchsia) to style this page.
+- The [Pandoc Logo] used on this site was created by Albert Krewinkel ([tarleb])
+  and published under CC BY-SA 4.0 license.
+- We use the amazing [PicoCSS] (fuchsia) to style this page.
 
 [tarleb]: https://github.com/tarleb
 [Pandoc Logo]: https://github.com/tarleb/pandoc-logo
