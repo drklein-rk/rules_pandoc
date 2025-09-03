@@ -54,19 +54,13 @@ genrule(
 
 ### Acknowledgement
 
-**pandoc-logo**
+[Pandoc Logo]
 : The pandoc logo used on this site was created by Albert Krewinkel ([tarleb])
 and published under CC BY-SA 4.0 license.
 
-    - [pandoc-logo] Source repository
-
-**Pico CSS :sparkles:**
+[PicoCSS]
 : We use the amazing PicoCSS (fuchsia) to style this page.
 
-    - [PicoCSS Website][picocss-website]
-    - [PicoCSS Source][picocss-source]
-
 [tarleb]: https://github.com/tarleb
-[pandoc-logo]: https://github.com/tarleb/pandoc-logo
-[picocss-website]: https://picocss.com/
-[picocss-source]: https://github.com/picocss/pico
+[Pandoc Logo]: https://github.com/tarleb/pandoc-logo
+[PicoCSS]: https://github.com/picocss/pico
