@@ -68,9 +68,9 @@ page(
 )
 
 page(
-    name = "contrib_html",
+    name = "contribute_html",
     src = "//:CONTRIBUTING.md",
-    out = "contrib.html",
+    out = "contribute.html",
     args = [
         "--toc=true",
         "--shift-heading-level-by=1",
@@ -82,7 +82,7 @@ filegroup(
     name = "docs",
     srcs = [
         ":assets",
-        ":contrib_html",
+        ":contribute_html",
         ":index_html",
         ":rules_html",
     ],
