@@ -1,14 +1,3 @@
 HTML
 HEAD(`page.css')
-BODY(`<article>$body$</article>
-      <aside>
-        <section class="content-wrapper">
-          <nav id="$idprefix$TOC" role="doc-toc">
-            $if(toc-title)$
-            <h4 id="$idprefix$toc-title">$toc-title$</h4>
-            $endif$ $table-of-contents$
-          </nav>
-          <hr />
-          <a href="GITHUB_URL`blob/main/$source$'">Page source</a>
-        </section>
-      </aside>')
+BODY(`ARTICLE')

@@ -35,3 +35,15 @@ define(`BODY', `dnl
     </section>
     FOR(`include-after')
 </body>')dnl
+define(`ARTICLE', `<article>$body$</article>
+      <aside>
+        <section class="content-wrapper">
+          <nav id="$idprefix$TOC" role="doc-toc">
+            $if(toc-title)$
+            <h4 id="$idprefix$toc-title">$toc-title$</h4>
+            $endif$ $table-of-contents$
+          </nav>
+          <hr />
+          <a href="GITHUB_URL`blob/main/$source$'">Page source</a>
+        </section>
+      </aside>')dnl
