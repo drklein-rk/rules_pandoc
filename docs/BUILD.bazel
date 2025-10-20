@@ -1,4 +1,5 @@
 load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
+load("@aspect_bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
 load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("@rules_m4//m4:m4.bzl", "m4")
@@ -88,6 +89,12 @@ filegroup(
 )
 
 update_docs(name = "update")
+
+copy_to_directory(
+    name = "public",
+    srcs = [":docs"],
+    visibility = ["//visibility:public"],
+)
 
 bzl_library(
     name = "page",
