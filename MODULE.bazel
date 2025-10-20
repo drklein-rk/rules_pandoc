@@ -22,7 +22,7 @@ git_override(
 )
 
 pandoc = use_extension("//pandoc:extensions.bzl", "pandoc")
-pandoc.toolchain(pandoc_version = "3.7.0.2")
+pandoc.toolchain(pandoc_version = "3.8.2.1")
 use_repo(pandoc, "pandoc_toolchains")
 
 register_toolchains("@pandoc_toolchains//:all")
