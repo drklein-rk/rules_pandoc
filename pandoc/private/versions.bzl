@@ -12,4 +12,11 @@ TOOL_VERSIONS = {
         "linux-arm64": "sha384-OUzTHvjUfAXMbad53m+3YNEUrn9eC7jp/GPUzR/SHnzxfaWgKJGsjcEWJOVUBpZ7",
         "linux-amd64": "sha384-5NYFtQ3KG2PCKXbcGChtpudnkANkBGxdzWKZGS4saz59sjVpFMsdz1tkgvmStowO",
     },
+    "3.8.2.1": {
+        "x86_64-macOS": "sha384-5HWXgp99WGaJgajaHoTh4D0nP4dmGWi7bfUQsYN5VaGVEYaAxZ8MzbwAfcXvqfFC",
+        "arm64-macOS": "sha384-w/nGMD2E0IeA3p4d2aJrCZGOMsyzV1bSyCK6fOA/DvAPm+wKvep/AiaVt7aRIuuA",
+        "windows-x86_64": "sha384-RmFdZb28kExJjEHW5xQyIDIu2vXx7JCkn3Ljtes/Z5Q/RmiKj3qLuXGy9G0znO5m",
+        "linux-arm64": "sha384-1ZDBuEs1rKmJGMBvWf/F1uxUjSnByWbrSveO3kctG25yaUMviuxg4KP05zB0mw9x",
+        "linux-amd64": "sha384-MaaL1h509IyOugSlKOmL841/7YYZIXVFVVXe6G19SejbcooT0E+/QKKxV6V9wPxw",
+    },
 }
