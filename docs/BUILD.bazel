@@ -36,7 +36,7 @@ m4(
 )
 
 stardoc_with_diff_test(
-    name = "rules",
+    name = "api",
     bzl_library_target = "//pandoc:defs",
 )
 
@@ -57,14 +57,14 @@ page(
 )
 
 page(
-    name = "rules_html",
-    src = ":rules.md",
-    out = "rules.html",
+    name = "api_html",
+    src = ":api.md",
+    out = "api.html",
     args = [
         "--toc=true",
-        "--css=/assets/rules.css",
+        "--css=/assets/stardoc.css",
     ],
-    title = "Rules",
+    title = "API",
 )
 
 page(
@@ -73,7 +73,6 @@ page(
     out = "contribute.html",
     args = [
         "--toc=true",
-        "--shift-heading-level-by=1",
     ],
     title = "Contribute",
 )
@@ -81,10 +80,10 @@ page(
 filegroup(
     name = "docs",
     srcs = [
+        ":api_html",
         ":assets",
         ":contribute_html",
         ":index_html",
-        ":rules_html",
     ],
 )
 

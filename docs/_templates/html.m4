@@ -21,17 +21,19 @@ define(`HEAD', `dnl
   pre {
     border: 1px solid var(--pico-form-element-active-border-color);
   }
+  p.title {
+    --pico-font-weight: 600;
+  }
   include(`$1')
   </style>
 </head>')dnl
+define(`TITLE', `<section class="container"><$1 class="title">$title$</$1></section>')dnl
 define(`BODY', `dnl
 <body>
     FOR(`include-before')
+    $1
     <section class="container">
-      <h1 class="title">$title$</h1>
-    </section>
-    <section class="container">
-      <main>$1</main>
+      <main>$2</main>
     </section>
     FOR(`include-after')
 </body>')dnl
