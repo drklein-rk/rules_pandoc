@@ -46,6 +46,10 @@ repos:
     rev: v3.1.0
     hooks:
       - id: prettier
+        exclude: |
+          (?x)^(
+            docs/_templates/.*\.in\.html
+          )
   - repo: https://github.com/google/yamlfmt
     rev: v0.14.0
     hooks:

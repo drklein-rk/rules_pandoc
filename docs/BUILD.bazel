@@ -1,10 +1,97 @@
-# This load statement must be in the docs/ package rather than anything users depend on
-# so that the dependency on stardoc doesn't leak to them.
+load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@rules_m4//m4:m4.bzl", "m4")
+load(":page.bzl", "page")
+
+M4_OPTIONS = [
+    "-I",
+    "docs/_includes",
+]
+
+m4(
+    name = "index_template",
+    srcs = [
+        ":_templates/html.m4",
+        ":_templates/index.in.html",
+    ],
+    data = [
+        ":_includes/index.css",
+    ],
+    m4_options = M4_OPTIONS,
+    output = "index.template.html",
+)
+
+m4(
+    name = "page_template",
+    srcs = [
+        ":_templates/html.m4",
+        ":_templates/page.in.html",
+    ],
+    data = [
+        ":_includes/page.css",
+    ],
+    m4_options = M4_OPTIONS,
+    output = "page.template.html",
+)
 
 stardoc_with_diff_test(
-    name = "rules",
+    name = "api",
     bzl_library_target = "//pandoc:defs",
 )
 
+copy_to_bin(
+    name = "assets",
+    srcs = glob(["assets/*"]),
+)
+
+page(
+    name = "index_html",
+    src = "//:README.md",
+    out = "index.html",
+    args = [
+        "--toc=false",
+        "--shift-heading-level-by=-1",
+    ],
+    template = ":index_template",
+)
+
+page(
+    name = "api_html",
+    src = ":api.md",
+    out = "api.html",
+    args = [
+        "--toc=true",
+        "--css=/assets/stardoc.css",
+    ],
+    title = "API",
+)
+
+page(
+    name = "contribute_html",
+    src = "//:CONTRIBUTING.md",
+    out = "contribute.html",
+    args = [
+        "--toc=true",
+    ],
+    title = "Contribute",
+)
+
+filegroup(
+    name = "docs",
+    srcs = [
+        ":api_html",
+        ":assets",
+        ":contribute_html",
+        ":index_html",
+    ],
+)
+
 update_docs(name = "update")
+
+bzl_library(
+    name = "page",
+    srcs = ["page.bzl"],
+    visibility = ["//visibility:public"],
+    deps = ["//pandoc:defs"],
+)

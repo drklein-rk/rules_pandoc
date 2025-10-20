@@ -1,0 +1,5 @@
+/* Because the stardoc template does only use `<pre></pre>` */
+/* to wrap the summary we style this explicitly to give some space. */
+pre {
+  padding: var(--pico-spacing);
+}
