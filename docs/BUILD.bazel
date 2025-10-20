@@ -63,7 +63,7 @@ page(
     out = "api.html",
     args = [
         "--toc=true",
-        "--css=/assets/stardoc.css",
+        "--css=assets/stardoc.css",
     ],
     title = "API",
 )
