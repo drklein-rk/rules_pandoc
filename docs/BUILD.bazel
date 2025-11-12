@@ -1,6 +1,5 @@
-load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
-load("@aspect_bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
-load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
+load("@bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
+load("@bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("@rules_m4//m4:m4.bzl", "m4")
 load(":page.bzl", "page")
@@ -34,11 +33,6 @@ m4(
     ],
     m4_options = M4_OPTIONS,
     output = "page.template.html",
-)
-
-stardoc_with_diff_test(
-    name = "api",
-    bzl_library_target = "//pandoc:defs",
 )
 
 copy_to_bin(
@@ -87,8 +81,6 @@ filegroup(
         ":index_html",
     ],
 )
-
-update_docs(name = "update")
 
 copy_to_directory(
     name = "public",
