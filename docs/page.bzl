@@ -2,7 +2,7 @@
 
 load("//pandoc:defs.bzl", "pandoc")
 
-def page(name, src, template = ":page_template", title = None, args = [], data = [], **kwargs):
+def page(name, src, template = "//docs:_templates/page.html", title = None, args = [], data = [], **kwargs):
     pandoc(
         name = name,
         read = "gfm+definition_lists",
