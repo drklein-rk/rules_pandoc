@@ -9,8 +9,6 @@ on:
   # Allow devs to tag manually through the GitHub UI.
   # For example after landing a fix that customers are waiting for.
   workflow_dispatch:
-  schedule:
-    - cron: "0 15 * * *" # Daily at 3PM UTC
 jobs:
   tag:
     permissions:
@@ -51,7 +49,7 @@ jobs:
         uses: smlx/ccv@7318e2f25a52dcd550e75384b84983973251a1f8 # v0.10.0
   release:
     needs: tag
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/release.yaml
     with:
       tag_name: ${{ needs.tag.outputs.new-tag-version }}
     secrets:
