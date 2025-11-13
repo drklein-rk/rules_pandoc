@@ -1,6 +1,13 @@
 {
-  "homepage": "https://github.com/drklein-rk/rules_pandoc",
-  "maintainers": [],
+  "homepage": "https://drklein-rk.github.io/rules_pandoc/",
+  "maintainers": [
+    {
+      "name": "Marc Redemske",
+      "email": "marc.redemske@drklein.de",
+      "github": "mgred",
+      "github_user_id": 2325260
+    }
+  ],
   "repository": ["github:drklein-rk/rules_pandoc"],
   "versions": [],
   "yanked_versions": {}
