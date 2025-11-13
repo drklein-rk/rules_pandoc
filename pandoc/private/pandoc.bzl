@@ -1,6 +1,6 @@
 "Pandoc Rules"
 
-load("@aspect_bazel_lib//lib:expand_make_vars.bzl", "expand_locations")
+load("@bazel_lib//lib:expand_make_vars.bzl", "expand_locations")
 
 _PANDOC_TOOLCHAIN = "//pandoc:toolchain_type"
 
