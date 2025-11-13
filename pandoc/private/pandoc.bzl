@@ -41,6 +41,10 @@ def _pandoc_implementation(ctx):
     if ctx.attr.embed_resources:
         args.add("--embed-resources")
 
+    if ctx.attr.metadata_file:
+        args.add("--metadata-file", ctx.file.metadata_file)
+        inputs.append(ctx.file.metadata_file)
+
     args.add_all(ctx.files.srcs)
 
     ctx.actions.run(
@@ -119,6 +123,12 @@ See the documentation for the [`--embed-resources`](https://pandoc.org/MANUAL.ht
             mandatory = False,
             doc = """\
 Metadata to give to the conversion. This represents the `--metadata` option of pandoc.""",
+        ),
+        "metadata_file": attr.label(
+            allow_single_file = True,
+            mandatory = False,
+            doc = """\
+A file containing metadata in YAML format (or JSON) to pass to pandoc.""",
         ),
         "data": attr.label_list(
             allow_files = True,

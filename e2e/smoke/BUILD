@@ -23,10 +23,21 @@ genrule(
     toolchains = ["@rules_pandoc//pandoc:resolved_toolchain"],
 )
 
+pandoc(
+    name = "html_out_3",
+    srcs = ["README.md"],
+    out = "markdown_with_metadata.html",
+    metadata_file = "metadata.yaml",
+    read = "gfm",
+    standalone = True,
+    write = "html5",
+)
+
 build_test(
     name = "smoke_test",
     targets = [
         ":html_out_1",
         ":html_out_2",
+        ":html_out_3",
     ],
 )
