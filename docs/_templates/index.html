@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>$title$ - rules_pandoc</title>
+    $for(header-includes)$ $header-includes$ $endfor$
+    <meta name="DC.Source" content="$source$" />
+    <meta name="DC.Title" content="$title$" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fuchsia.min.css"
+    />
+    $for(css)$
+    <link rel="stylesheet" href="$css$" />
+    $endfor$
+    <style>
+      pre {
+        border: 1px solid var(--pico-form-element-active-border-color);
+      }
+      p.title {
+        --pico-font-weight: 600;
+      }
+      h1.title {
+        text-align: center;
+        font-size: 6rem;
+        margin: 6rem auto;
+        padding: 0 6rem;
+      }
+
+      footer > p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    $for(include-before)$ $include-before$ $endfor$
+    <section class="container"><h1 class="title">$title$</h1></section>
+    <section class="container">
+      <main>$body$</main>
+    </section>
+    $for(include-after)$ $include-after$ $endfor$
+  </body>
+</html>
