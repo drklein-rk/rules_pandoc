@@ -69,6 +69,7 @@ def pandoc_register_toolchains(name, register = True, **kwargs):
     - create a repository exposing toolchains for each platform like "pandoc_platforms"
     - register a toolchain pointing at each platform
     Users can avoid this macro and do these steps themselves, if they want more control.
+
     Args:
         name: base name for all created repos, like "pandoc1_14"
         register: whether to call through to native.register_toolchains.
