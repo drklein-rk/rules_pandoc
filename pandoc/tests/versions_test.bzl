@@ -2,17 +2,16 @@
 See https://bazel.build/rules/testing#testing-starlark-utilities
 """
 
-load("@bazel_skylib//lib:unittest.bzl", "asserts", "unittest")
+load("@rules_testing//lib:test_suite.bzl", "test_suite")
 load("//pandoc/private:versions.bzl", "TOOL_VERSIONS")
 
-def _smoke_test_impl(ctx):
-    env = unittest.begin(ctx)
-    asserts.equals(env, "3.7.0.2", TOOL_VERSIONS.keys()[0])
-    return unittest.end(env)
-
-# The unittest library requires that we export the test cases as named test rules,
-# but their names are arbitrary and don't appear anywhere.
-_t0_test = unittest.make(_smoke_test_impl)
+def _smoke_test(env):
+    env.expect.that_str(TOOL_VERSIONS.keys()[0]).equals("3.7.0.2")
 
 def versions_test_suite(name):
-    unittest.suite(name, _t0_test)
+    test_suite(
+        name = name,
+        basic_tests = [
+            _smoke_test,
+        ],
+    )
