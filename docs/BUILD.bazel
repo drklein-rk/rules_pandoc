@@ -13,7 +13,6 @@ page(
     src = "//:README.md",
     out = "index.html",
     args = [
-        "--toc=false",
         "--shift-heading-level-by=-1",
     ],
     template = "//docs:_templates/index.html",
@@ -24,20 +23,18 @@ page(
     src = ":api.md",
     out = "api.html",
     args = [
-        "--toc=true",
         "--css=assets/stardoc.css",
     ],
     title = "API",
+    toc = True,
 )
 
 page(
     name = "contribute_html",
     src = "//:CONTRIBUTING.md",
     out = "contribute.html",
-    args = [
-        "--toc=true",
-    ],
     title = "Contribute",
+    toc = True,
 )
 
 filegroup(

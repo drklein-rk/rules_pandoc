@@ -24,6 +24,8 @@ def _pandoc_implementation(ctx):
     args.add("--read", ctx.attr.read)
     args.add("--write", ctx.attr.write)
 
+    args.add("--toc".format(toc = "true" if ctx.attr.toc else "false"))
+
     for a in ctx.attr.args:
         args.add_all([expand_locations(ctx, a, ctx.attr.data + ctx.attr.srcs)])
 
@@ -67,76 +69,84 @@ def _pandoc_implementation(ctx):
         ),
     ]
 
+_PANDOC_ATTRS = {
+    "srcs": attr.label_list(
+        allow_files = True,
+        mandatory = True,
+        doc = """\
+Source files that are passed as input to `pandoc`.""",
+    ),
+    "template": attr.label(
+        allow_single_file = True,
+        doc = """\
+The template to use to render the output file.""",
+    ),
+    "title": attr.string(
+        mandatory = False,
+    ),
+    "out": attr.output(
+        mandatory = True,
+        doc = "The output file to write",
+    ),
+    "args": attr.string_list(
+        mandatory = False,
+        default = [],
+        doc = """\
+Additional arguments passed to `pandoc`, subject to location expansion""",
+    ),
+    "read": attr.string(
+        mandatory = True,
+        doc = """\
+The format to read the sources as.
+Run `pandoc --list-input-formats` for more information""",
+    ),
+    "write": attr.string(
+        mandatory = True,
+        doc = """\
+The format to write the output as.
+Run `pandocs --list-output-formats` for more information""",
+    ),
+    "standalone": attr.bool(
+        default = False,
+        doc = """\
+Convert the input to a standalone document.
+See the documentation for the [`--standalone`](https://pandoc.org/MANUAL.html#option--standalone) option for details.""",
+    ),
+    "embed_resources": attr.bool(
+        default = False,
+        doc = """\
+Embed external resources (e.g. style files) into the output document.
+See the documentation for the [`--embed-resources`](https://pandoc.org/MANUAL.html#option--embed-resources[) option for details.""",
+    ),
+    "metadata": attr.string_dict(
+        mandatory = False,
+        doc = """\
+Metadata to give to the conversion. This represents the `--metadata` option of pandoc.""",
+    ),
+    "metadata_file": attr.label(
+        allow_single_file = True,
+        mandatory = False,
+        doc = """\
+A file containing metadata in YAML format (or JSON) to pass to pandoc.""",
+    ),
+    "toc": attr.bool(
+        default = False,
+        doc = """\
+Whether to include a table of contents in the output document.
+This is a shorthand for adding `--toc` to the `args` attribute.""",
+    ),
+    "data": attr.label_list(
+        allow_files = True,
+        mandatory = False,
+        doc = """\
+Additional files to add to the conversion, e.g.: header, footer, css files.""",
+    ),
+}
+
 pandoc = rule(
     doc = """\
 This is the main rule to interactive with `pandoc`.""",
-    attrs = {
-        "srcs": attr.label_list(
-            allow_files = True,
-            mandatory = True,
-            doc = """\
-Source files that are passed as input to `pandoc`.""",
-        ),
-        "template": attr.label(
-            allow_single_file = True,
-            doc = """\
-The template to use to render the output file.""",
-        ),
-        "title": attr.string(
-            mandatory = False,
-        ),
-        "out": attr.output(
-            mandatory = True,
-            doc = "The output file to write",
-        ),
-        "args": attr.string_list(
-            mandatory = False,
-            default = [],
-            doc = """\
-Additional arguments passed to `pandoc`, subject to location expansion""",
-        ),
-        "read": attr.string(
-            mandatory = True,
-            doc = """\
-The format to read the sources as.
-Run `pandoc --list-input-formats` for more information""",
-        ),
-        "write": attr.string(
-            mandatory = True,
-            doc = """\
-The format to write the output as.
-Run `pandocs --list-output-formats` for more information""",
-        ),
-        "standalone": attr.bool(
-            default = False,
-            doc = """\
-Convert the input to a standalone document.
-See the documentation for the [`--standalone`](https://pandoc.org/MANUAL.html#option--standalone) option for details.""",
-        ),
-        "embed_resources": attr.bool(
-            default = False,
-            doc = """\
-Embed external resources (e.g. style files) into the output document.
-See the documentation for the [`--embed-resources`](https://pandoc.org/MANUAL.html#option--embed-resources[) option for details.""",
-        ),
-        "metadata": attr.string_dict(
-            mandatory = False,
-            doc = """\
-Metadata to give to the conversion. This represents the `--metadata` option of pandoc.""",
-        ),
-        "metadata_file": attr.label(
-            allow_single_file = True,
-            mandatory = False,
-            doc = """\
-A file containing metadata in YAML format (or JSON) to pass to pandoc.""",
-        ),
-        "data": attr.label_list(
-            allow_files = True,
-            mandatory = False,
-            doc = """\
-Additional files to add to the conversion, e.g.: header, footer, css files.""",
-        ),
-    },
+    attrs = _PANDOC_ATTRS,
     implementation = _pandoc_implementation,
     toolchains = [_PANDOC_TOOLCHAIN],
 )
