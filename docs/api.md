@@ -10,7 +10,7 @@ Rules and Providers for working with [pandoc](https://pandoc.org/).
 load("@rules_pandoc//pandoc:defs.bzl", "pandoc")
 
 pandoc(<a href="#pandoc-name">name</a>, <a href="#pandoc-srcs">srcs</a>, <a href="#pandoc-data">data</a>, <a href="#pandoc-out">out</a>, <a href="#pandoc-args">args</a>, <a href="#pandoc-embed_resources">embed_resources</a>, <a href="#pandoc-metadata">metadata</a>, <a href="#pandoc-metadata_file">metadata_file</a>, <a href="#pandoc-read">read</a>, <a href="#pandoc-standalone">standalone</a>,
-       <a href="#pandoc-template">template</a>, <a href="#pandoc-title">title</a>, <a href="#pandoc-write">write</a>)
+       <a href="#pandoc-template">template</a>, <a href="#pandoc-title">title</a>, <a href="#pandoc-toc">toc</a>, <a href="#pandoc-write">write</a>)
 </pre>
 
 This is the main rule to interactive with `pandoc`.
@@ -23,7 +23,7 @@ This is the main rule to interactive with `pandoc`.
 | <a id="pandoc-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/concepts/labels#target-names">Name</a> | required |  |
 | <a id="pandoc-srcs"></a>srcs |  Source files that are passed as input to `pandoc`.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | required |  |
 | <a id="pandoc-data"></a>data |  Additional files to add to the conversion, e.g.: header, footer, css files.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | optional |  `[]`  |
-| <a id="pandoc-out"></a>out |  The output file to write   | <a href="https://bazel.build/concepts/labels">Label</a> | required |  |
+| <a id="pandoc-out"></a>out |  The output file to write   | <a href="https://bazel.build/concepts/labels">Label</a>; <a href="https://bazel.build/reference/be/common-definitions#configurable-attributes">nonconfigurable</a> | required |  |
 | <a id="pandoc-args"></a>args |  Additional arguments passed to `pandoc`, subject to location expansion   | List of strings | optional |  `[]`  |
 | <a id="pandoc-embed_resources"></a>embed_resources |  Embed external resources (e.g. style files) into the output document. See the documentation for the [`--embed-resources`](https://pandoc.org/MANUAL.html#option--embed-resources[) option for details.   | Boolean | optional |  `False`  |
 | <a id="pandoc-metadata"></a>metadata |  Metadata to give to the conversion. This represents the `--metadata` option of pandoc.   | <a href="https://bazel.build/rules/lib/dict">Dictionary: String -> String</a> | optional |  `{}`  |
@@ -32,6 +32,7 @@ This is the main rule to interactive with `pandoc`.
 | <a id="pandoc-standalone"></a>standalone |  Convert the input to a standalone document. See the documentation for the [`--standalone`](https://pandoc.org/MANUAL.html#option--standalone) option for details.   | Boolean | optional |  `False`  |
 | <a id="pandoc-template"></a>template |  The template to use to render the output file.   | <a href="https://bazel.build/concepts/labels">Label</a> | optional |  `None`  |
 | <a id="pandoc-title"></a>title |  -   | String | optional |  `""`  |
+| <a id="pandoc-toc"></a>toc |  Whether to include a table of contents in the output document. This is a shorthand for adding `--toc` to the `args` attribute.   | Boolean | optional |  `False`  |
 | <a id="pandoc-write"></a>write |  The format to write the output as. Run `pandocs --list-output-formats` for more information   | String | required |  |
 
 
