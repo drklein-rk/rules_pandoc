@@ -1,7 +1,7 @@
 load("@bazel_lib//:bzl_library.bzl", "bzl_library")
 load("@bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
-load("@bazel_lib//lib:write_source_files.bzl", "write_source_file")
 load("@bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
+load("@bazel_lib//lib:write_source_files.bzl", "write_source_file")
 load("@stardoc//stardoc:stardoc.bzl", "stardoc")
 load(":page.bzl", "page")
 
@@ -64,8 +64,8 @@ bzl_library(
 
 stardoc(
     name = "api",
-    input = "//pandoc:defs.bzl",
     out = "api-doc.md",
+    input = "//pandoc:defs.bzl",
     deps = ["//pandoc:defs"],
 )
 
