@@ -1,6 +1,8 @@
 load("@bazel_lib//:bzl_library.bzl", "bzl_library")
 load("@bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 load("@bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
+load("@bazel_lib//lib:write_source_files.bzl", "write_source_file")
+load("@stardoc//stardoc:stardoc.bzl", "stardoc")
 load(":page.bzl", "page")
 
 copy_to_bin(
@@ -58,4 +60,17 @@ bzl_library(
     srcs = ["page.bzl"],
     visibility = ["//visibility:public"],
     deps = ["//pandoc:defs"],
+)
+
+stardoc(
+    name = "api",
+    out = "api-doc.md",
+    input = "//pandoc:defs.bzl",
+    deps = ["//pandoc:defs"],
+)
+
+write_source_file(
+    name = "api_md",
+    in_file = ":api",
+    out_file = "api.md",
 )
