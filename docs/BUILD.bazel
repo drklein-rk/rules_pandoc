@@ -32,10 +32,10 @@ page(
 )
 
 page(
-    name = "contribute_html",
+    name = "contributing_html",
     src = "//:CONTRIBUTING.md",
-    out = "contribute.html",
-    title = "Contribute",
+    out = "contributing.html",
+    title = "Contributing",
     toc = True,
 )
 
@@ -44,7 +44,7 @@ filegroup(
     srcs = [
         ":api_html",
         ":assets",
-        ":contribute_html",
+        ":contributing_html",
         ":index_html",
     ],
 )
